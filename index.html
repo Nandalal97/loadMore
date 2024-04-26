@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load More</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <div id="items">
+        <!-- Your initial 10 items here -->
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+
+    </div>
+      <button id="loadMore">Load more</button>
+    
+
+<script>
+  
+  
+    // var initialItems = 10;
+    localStorage.setItem("initialItems", 10);
+    localStorage.setItem( "load",1);
+    console.log(localStorage.getItem("initialItems"))
+    console.log(localStorage.getItem("load"))
+
+   $('#loadMore').on('click', function(){
+    var itemsToShow = parseInt(localStorage.getItem("initialItems"));
+    var totalItems = itemsToShow+5;
+
+    var load =parseInt(localStorage.getItem("load"));
+    var totalLoad=load+1;
+    
+    if(load==1){
+        var i=itemsToShow+1;
+     
+    }else{
+        var i=itemsToShow;
+    }
+    for (i=i; i <= itemsToShow+5; i++) {
+    $('#items').append('<div class="item">' + i + '</div>');
+
+    }
+    
+    localStorage.setItem("initialItems", i);
+    localStorage.setItem( "load",totalLoad);
+
+        // console.log(totalItems);
+        // console.log(totalLoad);
+        
+});
+
+
+
+</script>
+
+</body>
+</html>
